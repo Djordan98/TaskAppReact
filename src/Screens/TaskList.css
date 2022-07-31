@@ -1,0 +1,22 @@
+
+#container-taskList-screen{
+
+    width: 25%;
+    border: solid gray 1px;
+    margin: 20px auto;
+   
+
+}
+#container-taskList-screen>h1{
+    text-align: center;
+}
+
+#taskControlContainer{
+    display: flex;
+    justify-content: space-around;
+  
+}
+
+#taskControlContainer>#taskInputField{
+    width: 200px;
+}

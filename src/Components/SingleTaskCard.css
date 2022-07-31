@@ -1,0 +1,28 @@
+#taskCard{
+
+  border: solid 2px black;
+  border-radius: 5px;
+  width: 80%;
+  margin: 25px auto;
+}
+#taskCard.finishedTask{
+  background-color: green;
+}
+#taskCard.unFinishedTask{
+  background-color: red;
+}
+#content{
+  display: flex;
+  justify-content: space-between;
+  border-right: solid 2px black;
+  background-color: white;
+  margin-right: 15px;
+  border-radius: 5px;
+  padding:5px 10px;
+  
+}
+#content>.text{
+  font-size: 20px;
+ 
+
+}
