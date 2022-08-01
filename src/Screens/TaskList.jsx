@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import './TaskList.css';
+//kupljenje taskListPropa i stavljanja u promenljivu
 const TaskList = ({ taskListProps }) => {
     const {
         allTasks, 
@@ -11,7 +12,7 @@ const TaskList = ({ taskListProps }) => {
         inputText,
         setInputText,
     } = taskListProps;
-
+    //fofabanje novih taskova
     const handleAddTaskBtn = () => {
         setAllTasks([...allTasks, {taskDetails: inputText, isFinished: false}]);
         setInputText('');
@@ -33,6 +34,7 @@ const TaskList = ({ taskListProps }) => {
 
             {allTasks.map(singleTask => {
                 return(
+                    //slanje vrednosti u SinglTaskCard
                 <SingleTaskCard 
                     taskDetails={singleTask.taskDetails} 
                     isFinished={singleTask.isFinished} 

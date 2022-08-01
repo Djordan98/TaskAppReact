@@ -3,9 +3,9 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [allTasks, setAllTasks] = useState([]);
-  const [inputText, setInputText] = useState('');
-  
+  const [allTasks, setAllTasks] = useState([]);//niz taskova,funkcija za dodavanje elemenata i vrednost
+  const [inputText, setInputText] = useState('');//tekst,funkcija za dodavanje teksta u input i vrednost
+  //propovanje vrednosti i funkcija
   const taskListProps = {
     allTasks, 
     setAllTasks,
@@ -14,6 +14,7 @@ function App() {
   };
 
   return (
+    //prosledjivanje funkcija i vrednosti u TaskList
     <TaskList taskListProps={ taskListProps } />
   );
 }
