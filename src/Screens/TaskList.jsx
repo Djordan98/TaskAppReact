@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
 import './TaskList.css';
-//kupljenje taskListPropa i stavljanja u promenljivu
+//kupljenje taskListPropa u odvojene konstante
 const TaskList = ({ taskListProps }) => {
     const {
         allTasks, 
@@ -12,12 +12,12 @@ const TaskList = ({ taskListProps }) => {
         inputText,
         setInputText,
     } = taskListProps;
-    //fofabanje novih taskova
+    //dofabanje novih taskova
     const handleAddTaskBtn = () => {
-        setAllTasks([...allTasks, {taskDetails: inputText, isFinished: false}]);
+        setAllTasks([...allTasks, {id: allTasks.length, taskDetails: inputText, isFinished: false}]);
         setInputText('');
     }
-    
+    console.log('RENDERUJEM SE');
     return (
         <div id="container-taskList-screen">
             <h1>TITLE</h1>
@@ -34,10 +34,15 @@ const TaskList = ({ taskListProps }) => {
 
             {allTasks.map(singleTask => {
                 return(
-                    //slanje vrednosti u SinglTaskCard
-                <SingleTaskCard 
+                    //renderovanje SinglTaskCard-a za svaki objekat u nizu "allTasks"
+                <SingleTaskCard
+                    key={singleTask.id}
                     taskDetails={singleTask.taskDetails} 
                     isFinished={singleTask.isFinished} 
+                    allTasks = {allTasks}
+                    setAllTasks={setAllTasks}
+                    clickedTaskId={singleTask.id}
+                    
                 />
                 );
             })}
