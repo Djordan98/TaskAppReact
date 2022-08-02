@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import SingleTaskCard from '../Components/SingleTaskCard'
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -14,13 +15,14 @@ const TaskList = ({ taskListProps }) => {
     } = taskListProps;
     //dofabanje novih taskova
     const handleAddTaskBtn = () => {
+        axios.post("http://localhost:3000/data", {id: allTasks.length, taskDetails: inputText, isFinished: false})
+        .then(ress => console.log(ress));
         setAllTasks([...allTasks, {id: allTasks.length, taskDetails: inputText, isFinished: false}]);
         setInputText('');
     }
-    console.log('RENDERUJEM SE');
     return (
         <div id="container-taskList-screen">
-            <h1>TITLE</h1>
+            <h1>TO DO LIST</h1>
             <div id="taskControlContainer">
                 <TextField 
                     id="taskInputField" 
@@ -42,7 +44,6 @@ const TaskList = ({ taskListProps }) => {
                     allTasks = {allTasks}
                     setAllTasks={setAllTasks}
                     clickedTaskId={singleTask.id}
-                    
                 />
                 );
             })}

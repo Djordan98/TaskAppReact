@@ -1,4 +1,6 @@
-import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
+import React from 'react';
+import axios from 'axios';
+import Button from '@mui/material/Button';
 import './SingleTaskCard.css';
 
 const SingleTaskCard = ({ 
@@ -10,6 +12,12 @@ const SingleTaskCard = ({
 }) => {
 
   const handleCardClick = () => {
+    axios.put(`http://localhost:3000/data/${clickedTaskId}`, {
+      id:clickedTaskId,
+      taskDetails: taskDetails,
+      isFinished: !isFinished
+    }).then(ress=>console.log(ress));
+
     const allTasksAfterCheck = allTasks.map(singleTask => {
       if(singleTask.id === clickedTaskId) {
           return {...singleTask, isFinished: !singleTask.isFinished};
@@ -20,9 +28,8 @@ const SingleTaskCard = ({
   }
 
   const handleRemoveCardClick = () => {
-    console.log('before', allTasks);
+    axios.delete(`http://localhost:3000/data/${clickedTaskId}`).then(ress => console.log(ress));
     const allTasksAfterDelete = allTasks.filter(singleTask => singleTask.id !== clickedTaskId);
-    console.log('after ', allTasksAfterDelete);
     setAllTasks(allTasksAfterDelete);
   };
 
@@ -35,8 +42,8 @@ const SingleTaskCard = ({
           </div>
         </div>
       </div> 
-      <div className="svgIcon" onClick={handleRemoveCardClick}>
-        <DeleteOutlinedIcon fontSize="large" />
+      <div className="svgIcon">
+        <Button variant="contained" onClick={handleRemoveCardClick} color="error">DELETE</Button>
       </div>
     </div>
   );
