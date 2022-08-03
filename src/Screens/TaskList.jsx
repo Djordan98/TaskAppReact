@@ -24,7 +24,7 @@ const TaskList = ({ taskListProps }) => {
         <div id="container-taskList-screen">
             <h1>TO DO LIST</h1>
             <div id="taskControlContainer">
-                <TextField 
+                <TextField
                     id="taskInputField" 
                     label="Insert Task" 
                     variant="outlined"

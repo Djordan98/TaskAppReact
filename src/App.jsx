@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
 import TaskList from './Screens/TaskList'
+import Login from './Screens/Login';
 import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import './App.css';
 
 function App() {
@@ -25,8 +28,14 @@ function App() {
   };
 
   return (
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/todo-app" element={<TaskList taskListProps={ taskListProps } />} />
+        </Routes>
+    </BrowserRouter>
     //prosledjivanje funkcija i vrednosti u TaskList
-    <TaskList taskListProps={ taskListProps } />
+    //
   );
 }
 
